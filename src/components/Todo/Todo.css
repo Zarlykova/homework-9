@@ -1,0 +1,61 @@
+.todo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 40rem;
+    margin-left: -7rem;
+    margin-top: 1.5rem;
+  }
+  
+  .todo__title {
+    background-color:white;
+    color: black;
+    margin-left: -3rem;
+    border: 1px solid rgb(5, 5, 5);
+    border-radius: 10px;
+    padding: 8px;
+    width: 450px;
+    
+  }
+  
+
+  .todo .todo__buttons {
+    margin-right:-2rem ;
+  }
+  
+  .todo .todo__buttons .todo__toggle {
+    margin-right: 10px;
+    border: none;
+    border-radius: 30px;
+    background:dodgerblue;
+    color:blue;
+    padding: 10px 15px;
+    transition: all 0.1s ease;
+    cursor: pointer;
+  }
+  
+  .todo .todo__buttons .todo__delete {
+    margin-right: 10px;
+    border: none;
+    border-radius: 4px;
+    background:blueviolet;
+    color:#fff;
+    padding: 9px 15px;
+    transition: all 0.1s ease;
+    cursor: pointer;
+  }
+  
+  .todo .todo__buttons .todo__toggle:hover {
+    border: none;
+    border-radius: 30px;
+    background:rgb(70, 154, 239);
+    color:blue;
+  }
+  
+  .todo .todo__buttons .todo__delete:hover {
+    border: none;
+    border-radius: 4px;
+    background:darkslateblue;
+    color:white
+  }
+  
