@@ -1,58 +1,27 @@
 
-import React, { useState, useReducer } from 'react'
-import Todo from '../Todo/Todo'
+import React, { useState, } from 'react'
+import { ACTIONS, useTodoContext } from '../../store/TodoContext'
 import './Todos.css'
 
 
 
-export const ACTIONS ={
-    ADD_TODO:'add_todo',
-    TOGGLE_TODO:'toggle_todo',
-    DELETE_TODO:'delete_todo'
-}
-
-function reducer(todos, action){
-    switch(action.type){
-        case ACTIONS.ADD_TODO:
-            return[...todos, newTodo(action.payload.name)]
-        
-        case ACTIONS.TOGGLE_TODO:
-            return todos.map(todo=>{
-                if(todo.id === action.payload.id){
-                    return{...todo, complete: !todo.complete}
-                }
-                return todo
-            })
-        case ACTIONS.DELETE_TODO:
-            return todos.filter(todo=> todo.id !== action.payload.id)   
-            
-        default:
-           return todos    
-    }
-       
-
-}
-
-function newTodo(name){
-    return{id:Date.now(), name:name, complete:false }
-}
 
 function Todos() {
-    const [todos, dispatch] = useReducer(reducer, [])
+    const {dispatchTodo} = useTodoContext()
     const [name, setName] = useState('')
 
     function handleSubmit(e){
         e.preventDefault()
-        dispatch({type:ACTIONS.ADD_TODO, payload:{name:name}})
+        dispatchTodo({type:ACTIONS.ADD_TODO, payload:{name:name}})
         setName('')
-        
+        localStorage.setItem("Todos", JSON.stringify(name))
     }
-    console.log(todos)
+    // console.log(todos)
 
 
 
     return (
-        <div className="todos">
+         <div className="todos">
             <div className='todos__content'>
               
                 <div className="todos__forms">
@@ -65,13 +34,13 @@ function Todos() {
                     </button>
 
                 </div>
-                <div className="todos__todo">
-                    {todos.map(todo =>{
-                        return <Todo Key={todo.id} todo={todo} dispatch={dispatch} /> 
-                    })}
-                </div>
+               
+        
             </div>
-        </div>
+        </div> 
+            
+        
+       
     )
 }
 
